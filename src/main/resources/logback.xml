@@ -11,8 +11,25 @@
             <level>DEBUG</level>
         </filter>
     </appender>
-    <appender name="LogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <File>/logs/logfile.log</File>
+<!--    <appender name="LogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">-->
+<!--        <File>/tmp/logfile.log</File>-->
+<!--        <Append>true</Append>-->
+<!--        <encoder>-->
+<!--            <pattern>%X{EagleEye-TraceID} %d [%t] %p %logger{0} - %m%n</pattern>-->
+<!--        </encoder>-->
+<!--        <filter class="ch.qos.logback.classic.filter.ThresholdFilter">-->
+<!--            <level>INFO</level>-->
+<!--        </filter>-->
+<!--        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">-->
+<!--            <fileNamePattern>/logs/logfile.-%d{yyyy-MM-dd}.%i.log</fileNamePattern>-->
+<!--            <maxFileSize>100MB</maxFileSize>-->
+<!--            <maxHistory>30</maxHistory>-->
+<!--            <totalSizeCap>5GB</totalSizeCap>-->
+<!--        </rollingPolicy>-->
+<!--    </appender>-->
+
+    <appender name="LogFile" class="com.alibaba.dingyue.k8sweb.util.ImmediateFileAppender">
+        <File>${user.home}/tmp/k8s-demo-springcloud-web.log</File>
         <Append>true</Append>
         <encoder>
             <pattern>%X{EagleEye-TraceID} %d [%t] %p %logger{0} - %m%n</pattern>
@@ -21,7 +38,7 @@
             <level>INFO</level>
         </filter>
         <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
-            <fileNamePattern>/logs/logfile.-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <fileNamePattern>${user.home}/tmp/k8s-demo-springcloud-web.-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
             <maxFileSize>100MB</maxFileSize>
             <maxHistory>30</maxHistory>
             <totalSizeCap>5GB</totalSizeCap>
